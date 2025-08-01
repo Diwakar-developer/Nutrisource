@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>MicroGreens | Premium Homegrown Microgreens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(46,125,50,0.9) 0%, rgba(76,175,80,0.85) 100%);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .vegetable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .section-divider {
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+        }
+        .section-divider svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <span class="text-green-600 text-2xl font-bold">
+                        <img src="./nutri_source_logo.jpeg" alt="logo" style="width:90px;">
+                        <!-- <i class="fas fa-leaf mr-2"></i>MicroGreens</span> -->
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-800 hover:text-green-600 transition">Home</a>
+                    <a href="#varieties" class="text-gray-800 hover:text-green-600 transition">Varieties</a>
+                    <a href="#benefits" class="text-gray-800 hover:text-green-600 transition">Benefits</a>
+                    <a href="#growing" class="text-gray-800 hover:text-green-600 transition">Growing</a>
+                    <a href="#contact" class="text-gray-800 hover:text-green-600 transition">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-gray-800 text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white bg-pattern">
+        <div class="container mx-auto px-6 py-24 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6" style="color: green;">Fresh, Nutritious<br>Microgreens at Home</h1>
+                    <p class="text-lg mb-8 opacity-90" style="color:green">Discover the power of microgreens with our premium selection of easy-to-grow varieties bursting with flavor and nutrients.</p>
+                    <div class="flex space-x-4">
+                        <a href="#varieties" class="bg-white text-green-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"  style="color: black;border: 1mm solid black;">Explore Varieties</a>
+                        <a href="#growing" class="border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition" style="color: black;border: 1mm solid black;">Learn to Grow</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-green-500 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a155311e-af65-4c30-bae4-7dafe943e8c0.png" alt="Assortment of colorful microgreens in white ceramic bowls on a wooden table, arranged in circular pattern with natural sunlight" class="relative rounded-xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave divider -->
+        <div class="section-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="rgb(248 250 252)"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="rgb(248 250 252)"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="rgb(248 250 252)"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Varieties Section -->
+    <section id="varieties" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Premium Microgreen Varieties</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Explore our carefully selected microgreen varieties, each with unique flavors and nutritional profiles.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mustard Microgreens -->
+                <div class="vegetable-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a44645cf-0669-48f7-919c-1fef0ffbb672.png" alt="Fresh mustard microgreens with vibrant green leaves on dark soil background, close-up shot showing delicate texture" class="w-full h-64 object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Mustard Microgreens</h3>
+                        <p class="text-green-600 font-medium mb-3">Spicy, Peppery Flavor</p>
+                        <p class="text-gray-600 mb-4">Packed with antioxidants and vitamin K, these spicy greens add a kick to salads and sandwiches.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-semibold">Days to Harvest: 7-10</span>
+                            <button class="text-green-600 hover:text-green-700 font-medium">Learn More →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fenugreek Microgreens -->
+                <div class="vegetable-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4b27c8ef-a303-4b98-b7ec-adf4677a58da.png" alt="Fresh fenugreek microgreens with small rounded leaves in soft morning light, arranged in neat rows on a wooden tray" class="w-full h-64 object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Fenugreek Microgreens</h3>
+                        <p class="text-green-600 font-medium mb-3">Sweet, Nutty Flavor</p>
+                        <p class="text-gray-600 mb-4">Rich in iron and fiber with a distinctive aroma, perfect for Indian dishes and health tonics.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-semibold">Days to Harvest: 10-14</span>
+                            <button class="text-green-600 hover:text-green-700 font-medium">Learn More →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sunflower Microgreens -->
+                <div class="vegetable-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/03a26f51-4f37-4800-bd17-cdd93626b7b7.png" alt="Sunflower microgreens with thick stems and bright green leaves emerging from black sunflower seeds, side lighting creating shadows" class="w-full h-64 object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Sunflower Microgreens</h3>
+                        <p class="text-green-600 font-medium mb-3">Nutty, Crunchy Texture</p>
+                        <p class="text-gray-600 mb-4">High in protein and vitamin E, these crunchy greens are great in wraps and stir-fries.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-semibold">Days to Harvest: 7-12</span>
+                            <button class="text-green-600 hover:text-green-700 font-medium">Learn More →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Horse Gram Microgreens -->
+                <div class="vegetable-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36083972-2d52-4789-9cd8-34d9696b10ef.png" alt="Horse gram microgreens with delicate stems and small leaves in a terracotta pot, shallow depth of field emphasizing texture" class="w-full h-64 object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Horse Gram Microgreens</h3>
+                        <p class="text-green-600 font-medium mb-3">Mild, Earthy Flavor</p>
+                        <p class="text-gray-600 mb-4">Exceptionally high in protein and iron, traditionally used in Ayurvedic remedies.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-semibold">Days to Harvest: 10-14</span>
+                            <button class="text-green-600 hover:text-green-700 font-medium">Learn More →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beetroot Microgreens -->
+                <div class="vegetable-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7a61898a-a386-4f83-9175-700063402b5d.png" alt="Vibrant red and green beetroot microgreens with colorful stems clustered together on a white ceramic plate" class="w-full h-64 object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Beetroot Microgreens</h3>
+                        <p class="text-green-600 font-medium mb-3">Earthy, Slightly Sweet</p>
+                        <p class="text-gray-600 mb-4">Rich in antioxidants and nitrates, these colorful greens support heart health and endurance.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-semibold">Days to Harvest: 12-16</span>
+                            <button class="text-green-600 hover:text-green-700 font-medium">Learn More →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All Varieties Card -->
+                <div class="vegetable-card bg-green-50 rounded-xl shadow-md overflow-hidden transition duration-300 border-2 border-green-100">
+                    <div class="h-full flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-seedling text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">More Varieties Available</h3>
+                        <p class="text-gray-600 mb-6">We offer a wide selection including radish, broccoli, pea shoots, and more!</p>
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition">Browse All</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-green-600 text-white bg-pattern">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Microgreens?</h2>
+                <p class="text-lg opacity-90 max-w-2xl mx-auto">Discover the incredible health benefits of incorporating microgreens into your diet</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Nutrient Powerhouse</h3>
+                    <p class="opacity-90">Microgreens contain 4-40 times more nutrients than their mature counterparts, packed with antioxidants, vitamins, and minerals.</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-home text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Easy to Grow</h3>
+                    <p class="opacity-90">Perfect for urban gardening—no yard needed! Just a small space, some soil, and sunlight are all you need to get started.</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Quick Harvest</h3>
+                    <p class="opacity-90">Most varieties are ready to harvest in just 7-14 days, providing a continuous supply of fresh greens all year round.</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Flavor Boost</h3>
+                    <p class="opacity-90">Intense, concentrated flavors can transform ordinary dishes into extraordinary culinary experiences with just a sprinkle.</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-recycle text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sustainable</h3>
+                    <p class="opacity-90">Require minimal water and space compared to traditional farming, reducing your environmental footprint significantly.</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-utensils text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Versatile Use</h3>
+                    <p class="opacity-90">Perfect for salads, sandwiches, smoothies, garnishes, and more—limitless ways to enjoy these nutritious greens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growing Guide Section -->
+    <section id="growing" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Easy Microgreens Growing Guide</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Follow our simple steps to grow your own microgreens at home in just days</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d997343f-4ebe-4283-9436-47d6274b52ed.png" alt="Step-by-step microgreens growing process from seeds to harvest: soaking seeds, planting in trays, daily watering, and final harvest with scissors" class="rounded-xl shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Choose Your Seeds</h3>
+                                <p class="text-gray-600 mt-1">Select from our premium organic microgreen seeds like mustard, sunflower, or fenugreek.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Prepare Your Tray</h3>
+                                <p class="text-gray-600 mt-1">Fill a shallow tray with 2 inches of organic potting mix or coconut coir, leveling the surface.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Sow the Seeds</h3>
+                                <p class="text-gray-600 mt-1">Evenly scatter seeds across the surface (about 1-2 tablespoons per tray), pressing gently into soil.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">4</div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Cover & Water</h3>
+                                <p class="text-gray-600 mt-1">Cover with another tray to create darkness for 2-3 days, misting lightly twice daily.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">5</div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Harvest & Enjoy</h3>
+                                <p class="text-gray-600 mt-1">After 7-14 days when first true leaves appear, snip just above soil level with clean scissors.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-green-50 rounded-xl p-8 md:p-10 border border-green-100">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-3/5 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Want Detailed Instructions?</h3>
+                        <p class="text-gray-600">Download our comprehensive microgreen growing guide with step-by-step photos, troubleshooting tips, and harvesting techniques.</p>
+                    </div>
+                    <div class="md:w-2/5 flex justify-center md:justify-end">
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition">
+                            <i class="fas fa-download mr-2"></i> Download Guide
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Growers Say</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Hear from health-conscious individuals who transformed their diets with homegrown microgreens</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4e205fbe-dadd-4661-af18-dfe437177d67.png" alt="Happy woman in her 30s with curly hair smiling at camera holding a bowl of fresh microgreens in her kitchen" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sarah J.</h4>
+                            <p class="text-green-600 text-sm">Home Gardener</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"I've been growing mustard microgreens for 6 months now and my salads have never been better! The flavor is incredible and I love knowing exactly where my food comes from."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/051213b1-0c6a-4a0c-9c6d-b4501735750a.png" alt="Professional chef in white uniform holding sunflower microgreens he just harvested, demonstrating in culinary school" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Marcus L.</h4>
+                            <p class="text-green-600 text-sm">Professional Chef</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"As a chef, freshness is everything. Growing my own microgreens ensures I always have premium ingredients. The sunflower microgreens add amazing texture to my dishes!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0eb58400-596a-42a6-b60c-59e89e119701.png" alt="Senior man with gray beard showing his urban balcony garden with multiple trays of fenugreek microgreens growing" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Robert T.</h4>
+                            <p class="text-green-600 text-sm">Urban Farmer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"At 67, I thought gardening was behind me. Microgreens changed that! I now grow fenugreek in my apartment and enjoy fresh greens daily. So rewarding!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-green-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Growing?</h2>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto mb-10">Join thousands of happy growers enjoying fresh, nutritious microgreens at home every day.</p>
+            
+            <div class="max-w-md mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Get Your Starter Kit</h3>
+                    <p class="text-gray-600 mb-6">Everything you need to begin your microgreens journey in one convenient package.</p>
+                    
+                    <form method="POST" action="/contact" class="space-y-4">
+                        @csrf
+                        <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-800" required>
+                        <input type="email" name="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-800" required>
+                        <input type="text" name="phone" placeholder="Phone Number" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-800">
+                        <select name="variety" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-800" required>
+                            <option value="" selected disabled>Choose Your Variety</option>
+                            @foreach($varieties as $variety)
+                                <option value="{{ $variety->id }}">{{ $variety->name }}</option>
+                            @endforeach
+                        </select>
+                        <textarea name="message" placeholder="Your Message" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-800"></textarea>
+                        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Get Started</button>
+                    </form>
+                </div>
+                <div class="bg-gray-50 px-6 py-4 text-center">
+                    <p class="text-gray-600 text-sm">Already growing with us? <a href="#" class="text-green-600 hover:underline">Sign in</a> to check your order status.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4">MicroGreens</h4>
+                    <p class="mb-4">Growing health, one microgreen at a time since 2018.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#varieties" class="hover:text-white transition">Varieties</a></li>
+                        <li><a href="#benefits" class="hover:text-white transition">Benefits</a></li>
+                        <li><a href="#growing" class="hover:text-white transition">Growing Guide</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Recipes</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>Ekambaram Industrial Estate Road</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3"></i>
+                            <span> +91 9677022395</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <span>hello@microgreens.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="mb-4 md:mb-0">© 2024 MicroGreens. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const mobileMenuLinks = document.querySelectorAll('.md\\:flex a');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                const navbar = this.closest('nav').querySelector('.md\\:flex');
+                navbar.classList.toggle('hidden');
+                navbar.classList.toggle('flex');
+                navbar.classList.toggle('flex-col');
+                navbar.classList.toggle('absolute');
+                navbar.classList.toggle('top-16');
+                navbar.classList.toggle('left-0');
+                navbar.classList.toggle('right-0');
+                navbar.classList.toggle('bg-white');
+                navbar.classList.toggle('shadow-lg');
+                navbar.classList.toggle('p-4');
+            });
+            
+            // Close mobile menu when a link is clicked
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const navbar = document.querySelector('.md\\:flex');
+                    if (navbar.classList.contains('absolute')) {
+                        navbar.classList.add('hidden');
+                        navbar.classList.remove('flex');
+                    }
+                });
+            });
+
+            // Form submission
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(contactForm);
+                    
+                    try {
+                        const response = await axios.post(contactForm.action, formData);
+                        alert(response.data.message);
+                        contactForm.reset();
+                    } catch (error) {
+                        if (error.response) {
+                            alert(error.response.data.message);
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>
